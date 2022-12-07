@@ -1,40 +1,33 @@
 <template>
-  <button @click="add">
-    ADD
-  </button>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
+  <!-- <MyBtn
+    class="heropy"
+    style="color: red;"
+    color="##ff000"
+    @hello="log">
+    Apple
+  </MyBtn> -->
+  <h1>branch_test</h1>
+  <div>
+    <span>{{ comma('1234') }}</span>
+  </div>
+  <h1>composition api</h1>
+  <Compositive />
 </template>
-
-
-<script>
-export default {
-  data() {
-    return {
-      // Getter, Setter
-      msg : 'Helo Computed!'
-    }
+ 
+ <script>
+ import MyBtn from '~/components/MyBtn'
+ import Compositive from '~/components/Compositive'
+ export default {
+  components: {
+    MyBtn, 
+    Compositive
   },
-  computed: {
-    // Getter
-    // reversedMessage() {
-    //   return this.msg.split('').reverse().join('')
-    // }
-    // Getter, Setter
-    reversedMessage: {
-      get() {
-       return this.msg.split('').reverse().join('') 
-      },
-      set(value) {
-        this.msg = value
+  computed:{
+    comma(){
+      return (val)=>{
+        return String(val).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       }
     }
-  },
-  methods: {
-    add() {
-      this.reversedMessage += '!?'
-    }
   }
-}</script>
+}
+</script>
