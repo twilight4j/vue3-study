@@ -1,40 +1,36 @@
 <template>
-  <button @click="add">
-    ADD
+  <button @click="handler">
+    Click me!
   </button>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
-  <h1>{{ reversedMessage }}</h1>
+  <ul>
+    <li
+      v-for="{id, name} in newFruits"
+      :key="id">
+      {{ name }}-{{ id }}
+    </li>
+  </ul>
 </template>
 
-
 <script>
+import shrotid from 'shortid'
 export default {
   data() {
     return {
-      // Getter, Setter
-      msg : 'Helo Computed!'
+      fruits: ['Apple','Banana','Cherry']
     }
   },
   computed: {
-    // Getter
-    // reversedMessage() {
-    //   return this.msg.split('').reverse().join('')
-    // }
-    // Getter, Setter
-    reversedMessage: {
-      get() {
-       return this.msg.split('').reverse().join('') 
-      },
-      set(value) {
-        this.msg = value
-      }
+    newFruits() {
+      return this.fruits.map(fruit => ({
+        id: shrotid.generate(),
+        name: fruit
+      }))
     }
   },
   methods: {
-    add() {
-      this.reversedMessage += '!?'
+    handler() {
+      this.fruits.push('Orange')
     }
   }
-}</script>
+}
+</script>
