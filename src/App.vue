@@ -1,35 +1,21 @@
 <template>
-  <button @click="handler">
-    Click me!
+  <button @click="handlerA(), handerB()">
+    Click me
   </button>
-  <ul>
-    <li
-      v-for="{id, name} in newFruits"
-      :key="id">
-      {{ name }}-{{ id }}
-    </li>
-  </ul>
 </template>
 
 <script>
-import shrotid from 'shortid'
 export default {
   data() {
     return {
-      fruits: ['Apple','Banana','Cherry']
-    }
-  },
-  computed: {
-    newFruits() {
-      return this.fruits.map(fruit => ({
-        id: shrotid.generate(),
-        name: fruit
-      }))
     }
   },
   methods: {
-    handler() {
-      this.fruits.push('Orange')
+    handlerA() {
+      console.log('A')
+    },
+    handlerB() {
+      console.log('B')
     }
   }
 }
