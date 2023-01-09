@@ -1,21 +1,16 @@
 <template>
-  <button @click="handlerA(), handerB()">
-    Click me
-  </button>
+  <input
+    type="text"
+    @keydown="handler" />
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-    }
-  },
   methods: {
-    handlerA() {
-      console.log('A')
-    },
-    handlerB() {
-      console.log('B')
+    handler(event) {
+        console.log(event)
+      // console.log('Enter!!')
+      
     }
   }
 }
