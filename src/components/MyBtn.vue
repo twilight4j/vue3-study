@@ -1,35 +1,43 @@
 <template>
-  <div
-    v-bind="$attrs"
-    class="btn"
-    @click="hello">
+  <div 
+    :class="{ large }"
+    :style="{ backgroundColor: color }"
+    class="btn">
     <slot />
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
-
 export default {
-	inheritAttrs: false,
-    props: {
-      color: {
-				type: String,
-        default: 'gray'
-      }
+  props: {
+    color: {
+      type: String,
+      default:'gray'
     },
-    emits: ['hello'],
-    setup(props, context) {
-			function hello() {
-				context.emit('hello')
-			}
-			onMounted(()=>{
-				console.log(props.color)
-				console.log(context.attrs)
-			})  
-			return {
-				hello
-			} 
-	}
+    large: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      type: String,
+      default:''
+    }
+  }
+}</script>
+
+<style scoped lang="scss">
+.btn {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+ &.large{
+  font-size: 20px;
+  padding: 10px 20px;
 }
-</script>
+}
+
+</style>
