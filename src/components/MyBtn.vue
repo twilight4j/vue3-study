@@ -2,14 +2,29 @@
   <div class="btn">
     <slot />
   </div>
-  <h1 v-bind="$attrs" />
+  <h1 @dblclick="$emit('heropy',$event)">
+    ABC
+  </h1>
+  <input
+    type="text"
+    v-model="msg" />
 </template>
 
 <script>
 export default {
-  inheritAttrs: false,
-  created() {
-    console.log(this.$attrs)
+  emits: [
+    'heropy',
+    'changeMsg'
+  ],
+  data(){
+    return {
+      msg: ''
+    }
+  },
+  watch: {
+    msg(){
+      this.$emit('changeMsg', this.msg)
+    }
   }
 }
 </script>
@@ -24,5 +39,4 @@ export default {
   color: white;
   cursor: pointer;
 }
-
 </style>
